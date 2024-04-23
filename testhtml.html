@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy China New Year!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #ff6347; /* Tomato color */
+        }
+
+        .present {
+            cursor: pointer;
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Happy China New Year! 🧧</h1>
+        <h1>From Reaksa</h1>
+        <p>Click on the present to reveal a festive message!</p>
+        <div class="present" onclick="revealMessage()"  ><h1>🎁</h1></div>
+        <div class="message" id="message"></div>
+        <button onclick="test()">Test</button>
+       <br>
+       <button onclick="json()">json</button>
+    </div>
+
+    <script>
+        function test(){
+        try{
+            window.webkit.messageHandlers.test.postMessage("Hello, world!");
+        }catch{
+
+        }
+        
+        console.log("click")
+    }
+    function json(){
+        var param = '{"eventName" : "fistCharge , "amount" : "200"}'
+        try{
+            window.webkit.messageHandlers.test.postMessage(param);
+        }catch{
+
+        }
+         
+        console.log(param)
+    }
+        function revealMessage() {
+            const message = document.getElementById('message');
+            const messages = [
+                "Wishing you a prosperous and joyous Year of the Tiger!",
+                "May the New Year bring you health, wealth, and happiness!",
+                "Happy Chinese New Year! 🐅🎊🎉"
+            ];
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            message.textContent = messages[randomIndex];
+            message.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
